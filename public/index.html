@@ -1,17 +1,52 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
+<html>
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+    <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+    <script src="https://cdn.staticfile.org/vue/3.2.36/vue.global.min.js"></script>
+</head>
+<body>
+<div id="hello-vue" class="demo">
+    {{ message }}
+</div>
+
+<button onclick="login()">登录</button>
+
+<script>
+    function login() {
+        const httpRequest = new XMLHttpRequest();//第一步：建立所需的对象
+        httpRequest.open('GET', 'http://localhost:8082/hello', true);//第二步：打开连接  将请求参数写在url中  ps:"http://localhost:8080/rest/xxx"
+        httpRequest.send();//第三步：发送请求  将请求参数写在URL中
+        /**
+         * 获取数据后的处理程序
+         */
+        httpRequest.onreadystatechange = function () {
+            if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+                const json = httpRequest.responseText;//获取到json字符串，还需解析
+                alert(json);
+            }
+        };
+    }
+    const HelloVueApp = {
+        data() {
+            return {
+                message: 'Hello Vue!!'
+            }
+        },
+        methods : {
+            login(){
+                alert("hello world!")
+            }
+        }
+    }
+
+    const vm = Vue.createApp(HelloVueApp).mount('#hello-vue')
+    document.write(vm.$data.message)
+    document.write("fuck you")
+
+    vm.message = "tmhbatw shuai"
+    document.write(vm.message)
+</script>
+
+</body>
 </html>
