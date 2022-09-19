@@ -5,7 +5,7 @@
     <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
     <script src="https://cdn.staticfile.org/vue/3.2.36/vue.global.min.js"></script>
 </head>
-<body>
+<body background="background.png">
 <div id="hello-vue" class="demo">
     {{ message }}
 </div>
@@ -41,12 +41,19 @@
     }
 
     const vm = Vue.createApp(HelloVueApp).mount('#hello-vue')
-    document.write(vm.$data.message)
-    document.write("fuck you")
-
     vm.message = "tmhbatw shuai"
-    document.write(vm.message)
 </script>
+
+<style type="text/css">
+
+.bgp{
+    background-image: url("@/assets/logo.png");
+    background-attachment: fixed;
+    background-size: 100%;
+}
+</style>
 
 </body>
 </html>
+
+
